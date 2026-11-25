@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Демонстрація роботи API</h1>
+
+<div id="message"></div>
+<div id="loading">⏳ Завантаження...</div>
+
+<form id="addForm" class="add-form" novalidate>
+    <input id="name" placeholder="Назва (мін. 2 символи)" required>
+    <input id="description" placeholder="Опис">
+    <input id="price" type="number" step="0.01" min="0" placeholder="Ціна, ₴" required>
+    <input id="stock" type="number" step="1" min="0" placeholder="Кількість на складі">
+    <input id="image" placeholder="Посилання на фото (необов'язково)">
+    <button type="submit">Додати товар</button>
+</form>
+
+<div id="dataList" class="data-list"></div>
+
+<style>
+    .add-form { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+    .add-form input { flex: 1 1 200px; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; }
+    .add-form button { padding: 10px 20px; border: none; border-radius: 6px; background: #2e6b2e; color: #fff5b8; font-size: 1rem; cursor: pointer; }
+    .add-form button:hover { background: #245524; }
+
+    #loading, #message { display: none; padding: 10px 14px; border-radius: 6px; margin: 12px 0; }
+    #loading.show, #message.show { display: block; }
+    #message.success { background: #e6f6ea; color: #17692f; }
+    #message.error { background: #fdeaea; color: #a11a1a; }
+
+    .data-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+    .item { border: 1px solid #ddd; border-radius: 10px; padding: 12px; background: #fff; }
+    .item img { width: 100%; height: 140px; object-fit: contain; }
+    .item h3 { font-size: 1rem; margin: 8px 0; }
+    .item .price { font-weight: bold; }
+    .empty-state { grid-column: 1 / -1; text-align: center; padding: 24px; color: #666; }
+</style>
+
+<script src="{{ url_for('static', filename='js/api-demo.js') }}"></script>
+{% endblock %}
