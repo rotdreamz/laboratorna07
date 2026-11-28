@@ -77,7 +77,9 @@ Fixture `app` у `conftest.py` підставляє `app.config['DATABASE'] = tm
 
 ## Результат запуску
 
-![pytest -v](lab_report/screenshots/lab07_pytest.png)
+![pytest -v, початок](lab_report/screenshots/lab07_pytest1.png)
+
+![pytest -v, кінець](lab_report/screenshots/lab07_pytest2.png)
 
 ![coverage](lab_report/screenshots/lab07_coverage.png)
 
